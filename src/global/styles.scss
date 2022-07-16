@@ -8,7 +8,14 @@
     font-family: "Roboto", sans-serif;
 }
 
-.container {
-    height: 100vh;
-    width: 100vw;
+
+body {
+    height: 100vh !important;
+    width: 100vw !important;
 }
+
+#root {
+    height: 100vh !important;
+}
+
+@import "~bootstrap/scss/bootstrap";
