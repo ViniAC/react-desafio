@@ -1,0 +1,21 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+}
+
+
+body {
+    height: 100vh !important;
+    width: 100vw !important;
+}
+
+#root {
+    height: 100vh !important;
+}
+
+@import "~bootstrap/scss/bootstrap";
