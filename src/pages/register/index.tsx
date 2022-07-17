@@ -65,19 +65,19 @@ export default function Register() {
                     </Alert>
                     <Form.Group className="mb-3 d-flex flex-column" controlId="formUsername">
                         <Form.Label>Nome</Form.Label>
-                        <Form.Control required value={userRegistrationData.username}
+                        <Form.Control id='input-username' required value={userRegistrationData.username}
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUserRegistrationDataData({ ...userRegistrationData, username: e.target.value })} type="text" placeholder="Nome" />
                         <Form.Label className='mt-3'>Senha</Form.Label>
-                        <Form.Control required value={userRegistrationData.password}
+                        <Form.Control id='input-password' required value={userRegistrationData.password}
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUserRegistrationDataData({ ...userRegistrationData, password: e.target.value })} type="password" placeholder="Senha" />
                         <Form.Label className='mt-3'>Confirmar senha</Form.Label>
-                        <Form.Control required value={userRegistrationData.confirmPassword}
+                        <Form.Control id='input-confirm-password' required value={userRegistrationData.confirmPassword}
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUserRegistrationDataData({ ...userRegistrationData, confirmPassword: e.target.value })} type="password" placeholder="Senha" />
                         <Button className="mt-5" type="submit">Adicionar</Button>
                     </Form.Group>
 
                 </Form>
-                <Link className="btn btn-primary mt-1 "
+                <Link id="to-login" className="btn btn-primary mt-1 "
                     role="button" to={"/"}>voltar</Link>
             </Container>
             <Container className='rightContainer h-75 d-flex flex-column px-5'>

@@ -58,15 +58,15 @@ export default function Login() {
                     </Alert>
                     <Form.Group className="mb-3" controlId="formUsername">
                         <Form.Label>Nome</Form.Label>
-                        <Form.Control required onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLoginData({ ...loginData, username: e.target.value })} type="text" placeholder="Username" />
+                        <Form.Control id="input-username" required onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLoginData({ ...loginData, username: e.target.value })} type="text" placeholder="Username" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formPassword">
                         <Form.Label>Senha</Form.Label>
-                        <Form.Control required type="password" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLoginData({ ...loginData, password: e.target.value })} placeholder="Password" />
+                        <Form.Control id="input-password" required type="password" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLoginData({ ...loginData, password: e.target.value })} placeholder="Password" />
                     </Form.Group>
                     <Container className='d-flex flex-column h-25'>
-                        <Button variant="primary" type="submit">
+                        <Button id="login" variant="primary" type="submit">
                             Login
                         </Button>
                         <Link className="btn btn-primary mt-2"
