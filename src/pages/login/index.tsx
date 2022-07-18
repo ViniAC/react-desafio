@@ -8,8 +8,10 @@ import { UserList } from '../../redux/userListSlice';
 export default function Login() {
     const [loginData, setLoginData] = useState({ username: "", password: "" });
     const [validated, setValidated] = useState(false);
-    const [alert, setAlert] = useState({ success: false, error: false })
+    const [successAlert, setSuccessAlert] = useState(false)
+    const [errorAlert, setErrorAlert] = useState(false);
     const { userList } = useAppSelector((state: { userList: UserList; }) => state.userList)
+
 
     function handleLogin(e: React.SyntheticEvent | any) {
         e.preventDefault();
@@ -23,21 +25,16 @@ export default function Login() {
         const result = userList.filter(function (el) {
             return el.login === loginData.username && el.password === loginData.password
         })
+
         if (result.length > 0) {
-            setAlert({ ...alert, success: true })
+            setSuccessAlert(true)
             setTimeout(() => {
-                setAlert({
-                    ...alert,
-                    success: false
-                })
+                setSuccessAlert(false)
             }, 5000)
         } else {
-            setAlert({ ...alert, error: true })
+            setErrorAlert(true)
             setTimeout(() => {
-                setAlert({
-                    ...alert,
-                    error: false
-                })
+                setErrorAlert(false)
             }, 5000)
         }
     }
@@ -50,10 +47,10 @@ export default function Login() {
 
             <Container className='container d-flex justify-content-center h-100 align-items-center'>
                 <Form noValidate validated={validated} onSubmit={handleLogin} className='h-50 w-75 p-5 border border-secondary rounded'>
-                    <Alert show={alert.success} key='primary' variant='primary'>
+                    <Alert show={successAlert} key='primary' variant='primary'>
                         Usuário logado!
                     </Alert>
-                    <Alert show={alert.error} key='primary' variant='danger'>
+                    <Alert show={errorAlert} key='primary' variant='danger'>
                         Usuário não existe!
                     </Alert>
                     <Form.Group className="mb-3" controlId="formUsername">
