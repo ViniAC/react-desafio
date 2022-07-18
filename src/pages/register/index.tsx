@@ -12,24 +12,19 @@ export default function Register() {
     const [userRegistrationData, setUserRegistrationDataData] = useState({ username: "", password: "", confirmPassword: "" });
     const [filter, setFilter] = useState("");
     const [validated, setValidated] = useState(false);
-    const [alert, setAlert] = useState({ success: false, error: false })
+    const [successAlert, setSuccessAlert] = useState(false)
+    const [errorAlert, setErrorAlert] = useState(false);
 
     function createAlert(b: boolean) {
         if (b) {
-            setAlert({ ...alert, success: true })
+            setSuccessAlert(true)
             setTimeout(() => {
-                setAlert({
-                    ...alert,
-                    success: false
-                })
+                setSuccessAlert(false)
             }, 5000)
         } else {
-            setAlert({ ...alert, error: true })
+            setErrorAlert(true)
             setTimeout(() => {
-                setAlert({
-                    ...alert,
-                    error: false
-                })
+                setErrorAlert(false)
             }, 5000)
         }
     }
@@ -45,7 +40,7 @@ export default function Register() {
         }
 
         setValidated(true);
-        if (userRegistrationData.password === userRegistrationData.confirmPassword) {
+        if (userRegistrationData.password !== "" && userRegistrationData.confirmPassword !== "" && userRegistrationData.password === userRegistrationData.confirmPassword) {
             dispatch(addUser({ login: userRegistrationData.username, password: userRegistrationData.password }))
             createAlert(true)
         } else createAlert(false)
@@ -57,10 +52,10 @@ export default function Register() {
 
             <Container className='leftContainer h-75 d-flex flex-column justify-content-center'>
                 <Form noValidate validated={validated} onSubmit={handleAddUser}>
-                    <Alert show={alert.success} key='primary' variant='primary'>
+                    <Alert show={successAlert} key='primary' variant='primary'>
                         Usuário criado!
                     </Alert>
-                    <Alert show={alert.error} key='primary' variant='danger'>
+                    <Alert show={errorAlert} key='primary' variant='danger'>
                         Erro ao criar usuário!
                     </Alert>
                     <Form.Group className="mb-3 d-flex flex-column" controlId="formUsername">
